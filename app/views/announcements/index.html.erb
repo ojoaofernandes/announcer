@@ -1,15 +1,11 @@
 <%= title 'My Announcements' %>
-
-<%= link_to 'New Announcement', new_announcement_path, class: 'btn btn-success' %>
-
-<br>
-<br>
+<hr>
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Body</th>
-      <th>User</th>
+      <th>When</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -17,11 +13,17 @@
   <tbody>
     <% @announcements.each do |announcement| %>
       <tr>
-        <td><%= announcement.body %></td>
-        <td><%= announcement.user_id %></td>
-        <td class="text-center"><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
-        <td class="text-center"><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= announcement.user.id.to_s + ' ' + announcement.body %></td>
+        <td><%= date_humanize announcement.updated_at %></td>
+        <td class="text-center">
+          <%= link_to 'Edit', edit_announcement_path(announcement) %>
+        </td>
+        <td class="text-center">
+          <%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'New Announcement', new_announcement_path, class: 'btn btn-success' %>
