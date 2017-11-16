@@ -1,16 +1,11 @@
 class AnnouncementsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  before_action :set_announcement, only: [:edit, :update, :destroy]
 
   # GET /announcements
   # GET /announcements.json
   def index
     @announcements = Announcement.all
-  end
-
-  # GET /announcements/1
-  # GET /announcements/1.json
-  def show
   end
 
   # GET /announcements/new
@@ -30,7 +25,7 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save
-        format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
+        format.html { redirect_to announcements_path, notice: 'Announcement was successfully created.' }
         format.json { render :show, status: :created, location: @announcement }
       else
         format.html { render :new }
@@ -44,7 +39,7 @@ class AnnouncementsController < ApplicationController
   def update
     respond_to do |format|
       if @announcement.update(announcement_params)
-        format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
+        format.html { redirect_to announcements_path, notice: 'Announcement was successfully updated.' }
         format.json { render :show, status: :ok, location: @announcement }
       else
         format.html { render :edit }
@@ -71,6 +66,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:body, :user_id)
+      params.require(:announcement).permit(:body)
     end
 end

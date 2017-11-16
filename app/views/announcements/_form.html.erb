@@ -11,12 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :body %>
-    <%= form.text_area :body, id: :announcement_body %>
+    <%= form.text_area :body, id: :announcement_body, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit nil, class: 'btn btn-success' %>
+  <%= link_to 'Back', announcements_path, class: 'btn btn-light' %>
 <% end %>
