@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   resources :announcements
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
+
   get 'home/index'
-
-  devise_for :users
-
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
