@@ -11,7 +11,7 @@
         <div class="card-footer d-flex justify-content-between align-items-center">
           <small>
             By
-            <% if announcement.user_id == current_user.id %>
+            <% if user_signed_in? && announcement.user_id == current_user.id %>
               yourself
             <% else %>
               <%= announcement.user.email %>
