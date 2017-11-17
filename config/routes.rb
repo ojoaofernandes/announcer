@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :announcements
+  resources :announcements, except: [:show]
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
