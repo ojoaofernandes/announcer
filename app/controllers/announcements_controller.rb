@@ -5,7 +5,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.all
+    @announcements = Announcement.where user_id: current_user.id
   end
 
   # GET /announcements/new
